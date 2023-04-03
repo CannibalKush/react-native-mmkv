@@ -29,7 +29,7 @@ export const createMMKV = (config: MMKVConfiguration): NativeMMKV => {
 
   const textEncoder = createTextEncoder();
 
-  if(config.id.indexOf('\\') !== -1) {
+  if (config.id.indexOf('\\') !== -1) {
     throw new Error('MMKV: `id` cannot contain the backslash character (`\\`)!');
   }
 
@@ -43,7 +43,7 @@ export const createMMKV = (config: MMKVConfiguration): NativeMMKV => {
     clearAll: () => storage().clear(),
     delete: (key) => storage().removeItem(prefixedKey(key)),
     set: (key, value) => {
-      if(key.indexOf('\\') !== -1) {
+      if (key.indexOf('\\') !== -1) {
         throw new Error('MMKV: `key` cannot contain the backslash character (`\\`)!');
       }
       storage().setItem(prefixedKey(key), value.toString())
